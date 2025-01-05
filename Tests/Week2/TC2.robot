@@ -7,11 +7,7 @@ ${EXPERTISE_LINKS}    Application Software, Embedded Software, DevOps, Quality A
 ${USEFUL_LINKS}       Contact Us, Open Positions, ISO certificates, Case Studies
 
 *** Test Cases ***
-<<<<<<< HEAD
 Check Main Page Footer
-=======
-TC2: Check Main Page Footer
->>>>>>> 148999c5385b386834b79806b31daf5cb9ffa72e
     Open Browser    ${URL}    Chrome
     Maximize Browser Window
     Title Should Be    Home < Avisto Eastern Europe
@@ -28,20 +24,14 @@ TC2: Check Main Page Footer
 
 *** Keywords ***
 Check Expertise Links
-<<<<<<< HEAD
     [Documentation]    This keyword checks whether all expertise links on the page are visible and clickable.
-=======
->>>>>>> 148999c5385b386834b79806b31daf5cb9ffa72e
     ${links}=    Create List    Application Software    Embedded Software    DevOps    Quality Assurance    Industrial Automation
     FOR    ${link}    IN    @{links}
         Check Expertise Link Exists    ${link}
     END
     
 Check Useful Links
-<<<<<<< HEAD
     [Documentation]    This keyword checks whether all useful links on the page are visible and clickable.
-=======
->>>>>>> 148999c5385b386834b79806b31daf5cb9ffa72e
     ${links}=    Create List    Contact Us    Open Positions    ISO certificates    Case Studies
     FOR    ${link}    IN    @{links}
         Check Useful Link Exists    ${link}

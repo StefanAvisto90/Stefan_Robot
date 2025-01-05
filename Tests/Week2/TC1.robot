@@ -4,10 +4,6 @@ Library    SeleniumLibrary
 *** Variables ***
 ${URL}    https://www.avisto-eastern.com/
 ${DESCRIPTION}    We are a service company specialized in software engineering
-<<<<<<< HEAD
-=======
-${CONTACT_US_BUTTON}    Contact us
->>>>>>> 148999c5385b386834b79806b31daf5cb9ffa72e
 ${TIMEOUT}    10s
 ${BROWSE_BUTTON}        //a[contains(@class, 'elementor-button-link') and .//span[contains(text(), 'BROWSE')]]
 
@@ -26,19 +22,10 @@ Check Main Page is Available
 *** Keywords ***
 Check Available Main Menus
     [Documentation]    This keyword checks that the main menus exist on the page.
-<<<<<<< HEAD
     @{MAIN_MENU}=    Create List       Services    Case Studies    About Us    Career    Blog    Contact Us
     FOR    ${menu}    IN    @{MAIN_MENU}
         Page Should Contain Element    xpath=//span[contains(text(),'${menu}')][1]
     END
-=======
-    Page Should Contain Element    (//span[contains(text(),'Services')])[1]
-    Page Should Contain Element    (//span[contains(text(),'Case Studies')])[1]
-    Page Should Contain Element    (//span[contains(text(),'About Us')])[1]
-    Page Should Contain Element    (//span[contains(text(),'Career')])[1]
-    Page Should Contain Element    (//span[contains(text(),'Blog')])[1]
-    Page Should Contain Element    (//span[contains(text(),'Contact Us')])[1]
->>>>>>> 148999c5385b386834b79806b31daf5cb9ffa72e
 
 Check For Avisto Logo
     [Documentation]    This keyword checks that the Avisto logo is present on the page.

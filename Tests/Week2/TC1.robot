@@ -29,7 +29,7 @@ Check Available Main Menus
 
 Check For Avisto Logo
     [Documentation]    This keyword checks that the Avisto logo is present on the page.
-    Page Should Contain Element    (//img[@class='dark'])[1]
+    Page Should Contain Element    xpath=//img[@class='mobile']
 
 Search For 'Browse' Button
     [Documentation]    This keyword checks if the 'Browse' button is present and clickable.

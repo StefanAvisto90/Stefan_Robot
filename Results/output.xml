@@ -1,169 +1,188 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1 (Python 3.11.9 on win32)" generated="20250105 14:10:00.583" rpa="false" schemaversion="4">
-<suite id="s1" name="TC1" source="C:\Users\Win10\Downloads\Stefan_Robot-master\Tests\Week2\TC1.robot">
-<test id="s1-t1" name="Check Main Page is Available" line="11">
+<robot generator="Robot 6.1 (Python 3.11.9 on win32)" generated="20250106 08:45:56.250" rpa="false" schemaversion="4">
+<suite id="s1" name="TC5" source="C:\Users\Win10\Downloads\Stefan_Robot-master\Tests\Week2\TC5.robot">
+<test id="s1-t1" name="TC1: Check About Us Menu" line="8">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${URL}</arg>
-<arg>chrome</arg>
+<arg>Chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20250105 14:10:00.958" level="INFO">Opening browser 'chrome' to base url 'https://www.avisto-eastern.com/'.</msg>
-<status status="PASS" starttime="20250105 14:10:00.958" endtime="20250105 14:10:22.788"/>
+<msg timestamp="20250106 08:45:56.892" level="INFO">Opening browser 'Chrome' to base url 'https://www.avisto-eastern.com/'.</msg>
+<status status="PASS" starttime="20250106 08:45:56.876" endtime="20250106 08:46:36.596"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20250105 14:10:22.789" endtime="20250105 14:10:23.102"/>
+<status status="PASS" starttime="20250106 08:46:36.612" endtime="20250106 08:46:36.914"/>
 </kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>${DESCRIPTION}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20250105 14:10:23.103" endtime="20250105 14:10:23.295"/>
-</kw>
-<kw name="Check Available Main Menus">
-<doc>This keyword checks that the main menus exist on the page.</doc>
+<kw name="Hover Over About Us Menu">
+<doc>This keyword simulates hovering the mouse over the "About Us" menu.
+It ensures that the sub-menu items (such as "History", "Avisto Offices", etc.) become visible.</doc>
 <kw name="Create List" library="BuiltIn">
-<var>@{MAIN_MENU}</var>
-<arg>Services</arg>
-<arg>Case Studies</arg>
-<arg>About Us</arg>
-<arg>Career</arg>
-<arg>Blog</arg>
-<arg>Contact Us</arg>
+<var>${ABOUT_US_MENU}</var>
+<arg>History</arg>
+<arg>Avisto Offices</arg>
+<arg>Advans group</arg>
+<arg>ISO certificates</arg>
+<arg>CORPORATE SOCIAL RESPONSIBILITY</arg>
+<arg>Code of conduct</arg>
 <doc>Returns a list containing given items.</doc>
-<msg timestamp="20250105 14:10:23.297" level="INFO">@{MAIN_MENU} = [ Services | Case Studies | About Us | Career | Blog | Contact Us ]</msg>
-<status status="PASS" starttime="20250105 14:10:23.296" endtime="20250105 14:10:23.297"/>
+<msg timestamp="20250106 08:46:36.919" level="INFO">${ABOUT_US_MENU} = ['History', 'Avisto Offices', 'Advans group', 'ISO certificates', 'CORPORATE SOCIAL RESPONSIBILITY', 'Code of conduct']</msg>
+<status status="PASS" starttime="20250106 08:46:36.918" endtime="20250106 08:46:36.919"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>xpath=//span[normalize-space(text())='About Us']</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20250106 08:46:36.921" level="INFO">Simulating Mouse Over on element 'xpath=//span[normalize-space(text())='About Us']'.</msg>
+<status status="PASS" starttime="20250106 08:46:36.919" endtime="20250106 08:46:37.632"/>
 </kw>
 <for flavor="IN">
-<var>${menu}</var>
-<value>@{MAIN_MENU}</value>
+<var>${link}</var>
+<value>@{ABOUT_US_MENU}</value>
 <iter>
-<var name="${menu}">Services</var>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<arg>xpath=//span[contains(text(),'${menu}')][1]</arg>
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<msg timestamp="20250105 14:10:23.318" level="INFO">Current page contains element 'xpath=//span[contains(text(),'Services')][1]'.</msg>
-<status status="PASS" starttime="20250105 14:10:23.297" endtime="20250105 14:10:23.318"/>
+<var name="${link}">History</var>
+<kw name="Check Link Exists">
+<arg>${link}</arg>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>xpath=//span[normalize-space(text())='${link_name}']</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20250106 08:46:37.718" level="INFO">Element 'xpath=//span[normalize-space(text())='History']' is displayed.</msg>
+<status status="PASS" starttime="20250106 08:46:37.633" endtime="20250106 08:46:37.718"/>
 </kw>
-<status status="PASS" starttime="20250105 14:10:23.297" endtime="20250105 14:10:23.318"/>
+<status status="PASS" starttime="20250106 08:46:37.633" endtime="20250106 08:46:37.718"/>
+</kw>
+<status status="PASS" starttime="20250106 08:46:37.632" endtime="20250106 08:46:37.718"/>
 </iter>
 <iter>
-<var name="${menu}">Case Studies</var>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<arg>xpath=//span[contains(text(),'${menu}')][1]</arg>
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<msg timestamp="20250105 14:10:23.357" level="INFO">Current page contains element 'xpath=//span[contains(text(),'Case Studies')][1]'.</msg>
-<status status="PASS" starttime="20250105 14:10:23.319" endtime="20250105 14:10:23.357"/>
+<var name="${link}">Avisto Offices</var>
+<kw name="Check Link Exists">
+<arg>${link}</arg>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>xpath=//span[normalize-space(text())='${link_name}']</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20250106 08:46:37.779" level="INFO">Element 'xpath=//span[normalize-space(text())='Avisto Offices']' is displayed.</msg>
+<status status="PASS" starttime="20250106 08:46:37.720" endtime="20250106 08:46:37.779"/>
 </kw>
-<status status="PASS" starttime="20250105 14:10:23.318" endtime="20250105 14:10:23.357"/>
+<status status="PASS" starttime="20250106 08:46:37.718" endtime="20250106 08:46:37.779"/>
+</kw>
+<status status="PASS" starttime="20250106 08:46:37.718" endtime="20250106 08:46:37.779"/>
 </iter>
 <iter>
-<var name="${menu}">About Us</var>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<arg>xpath=//span[contains(text(),'${menu}')][1]</arg>
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<msg timestamp="20250105 14:10:23.391" level="INFO">Current page contains element 'xpath=//span[contains(text(),'About Us')][1]'.</msg>
-<status status="PASS" starttime="20250105 14:10:23.358" endtime="20250105 14:10:23.391"/>
+<var name="${link}">Advans group</var>
+<kw name="Check Link Exists">
+<arg>${link}</arg>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>xpath=//span[normalize-space(text())='${link_name}']</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20250106 08:46:37.827" level="INFO">Element 'xpath=//span[normalize-space(text())='Advans group']' is displayed.</msg>
+<status status="PASS" starttime="20250106 08:46:37.781" endtime="20250106 08:46:37.828"/>
 </kw>
-<status status="PASS" starttime="20250105 14:10:23.357" endtime="20250105 14:10:23.391"/>
+<status status="PASS" starttime="20250106 08:46:37.781" endtime="20250106 08:46:37.828"/>
+</kw>
+<status status="PASS" starttime="20250106 08:46:37.781" endtime="20250106 08:46:37.828"/>
 </iter>
 <iter>
-<var name="${menu}">Career</var>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<arg>xpath=//span[contains(text(),'${menu}')][1]</arg>
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<msg timestamp="20250105 14:10:23.415" level="INFO">Current page contains element 'xpath=//span[contains(text(),'Career')][1]'.</msg>
-<status status="PASS" starttime="20250105 14:10:23.392" endtime="20250105 14:10:23.415"/>
+<var name="${link}">ISO certificates</var>
+<kw name="Check Link Exists">
+<arg>${link}</arg>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>xpath=//span[normalize-space(text())='${link_name}']</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20250106 08:46:37.876" level="INFO">Element 'xpath=//span[normalize-space(text())='ISO certificates']' is displayed.</msg>
+<status status="PASS" starttime="20250106 08:46:37.830" endtime="20250106 08:46:37.876"/>
 </kw>
-<status status="PASS" starttime="20250105 14:10:23.392" endtime="20250105 14:10:23.415"/>
+<status status="PASS" starttime="20250106 08:46:37.828" endtime="20250106 08:46:37.876"/>
+</kw>
+<status status="PASS" starttime="20250106 08:46:37.828" endtime="20250106 08:46:37.876"/>
 </iter>
 <iter>
-<var name="${menu}">Blog</var>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<arg>xpath=//span[contains(text(),'${menu}')][1]</arg>
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<msg timestamp="20250105 14:10:23.527" level="INFO">Current page contains element 'xpath=//span[contains(text(),'Blog')][1]'.</msg>
-<status status="PASS" starttime="20250105 14:10:23.416" endtime="20250105 14:10:23.527"/>
+<var name="${link}">CORPORATE SOCIAL RESPONSIBILITY</var>
+<kw name="Check Link Exists">
+<arg>${link}</arg>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>xpath=//span[normalize-space(text())='${link_name}']</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20250106 08:46:37.924" level="INFO">Element 'xpath=//span[normalize-space(text())='CORPORATE SOCIAL RESPONSIBILITY']' is displayed.</msg>
+<status status="PASS" starttime="20250106 08:46:37.877" endtime="20250106 08:46:37.924"/>
 </kw>
-<status status="PASS" starttime="20250105 14:10:23.416" endtime="20250105 14:10:23.527"/>
+<status status="PASS" starttime="20250106 08:46:37.877" endtime="20250106 08:46:37.924"/>
+</kw>
+<status status="PASS" starttime="20250106 08:46:37.876" endtime="20250106 08:46:37.924"/>
 </iter>
 <iter>
-<var name="${menu}">Contact Us</var>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<arg>xpath=//span[contains(text(),'${menu}')][1]</arg>
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<msg timestamp="20250105 14:10:23.568" level="INFO">Current page contains element 'xpath=//span[contains(text(),'Contact Us')][1]'.</msg>
-<status status="PASS" starttime="20250105 14:10:23.527" endtime="20250105 14:10:23.568"/>
+<var name="${link}">Code of conduct</var>
+<kw name="Check Link Exists">
+<arg>${link}</arg>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>xpath=//span[normalize-space(text())='${link_name}']</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20250106 08:46:37.976" level="INFO">Element 'xpath=//span[normalize-space(text())='Code of conduct']' is displayed.</msg>
+<status status="PASS" starttime="20250106 08:46:37.926" endtime="20250106 08:46:37.976"/>
 </kw>
-<status status="PASS" starttime="20250105 14:10:23.527" endtime="20250105 14:10:23.568"/>
+<status status="PASS" starttime="20250106 08:46:37.925" endtime="20250106 08:46:37.976"/>
+</kw>
+<status status="PASS" starttime="20250106 08:46:37.925" endtime="20250106 08:46:37.976"/>
 </iter>
-<status status="PASS" starttime="20250105 14:10:23.297" endtime="20250105 14:10:23.568"/>
+<status status="PASS" starttime="20250106 08:46:37.632" endtime="20250106 08:46:37.976"/>
 </for>
-<status status="PASS" starttime="20250105 14:10:23.296" endtime="20250105 14:10:23.568"/>
+<status status="PASS" starttime="20250106 08:46:36.917" endtime="20250106 08:46:37.976"/>
 </kw>
-<kw name="Check For Avisto Logo">
-<doc>This keyword checks that the Avisto logo is present on the page.</doc>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<arg>(//img[@class='dark'])[1]</arg>
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<msg timestamp="20250105 14:10:23.608" level="INFO">Current page contains element '(//img[@class='dark'])[1]'.</msg>
-<status status="PASS" starttime="20250105 14:10:23.571" endtime="20250105 14:10:23.608"/>
+<kw name="Click About Us Menu Item">
+<doc>This keyword clicks the "About Us" menu item and verifies that the URL navigates to the correct About Us page.
+It checks that after the click, the page URL is https://www.avisto-eastern.com/about-us/.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//span[normalize-space(text())='About Us']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20250106 08:46:37.979" level="INFO">Clicking element 'xpath=//span[normalize-space(text())='About Us']'.</msg>
+<status status="PASS" starttime="20250106 08:46:37.978" endtime="20250106 08:46:40.624"/>
 </kw>
-<status status="PASS" starttime="20250105 14:10:23.571" endtime="20250105 14:10:23.608"/>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>About Us &lt; Avisto Eastern Europe</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20250106 08:46:40.643" level="INFO">Page title is 'About Us &lt; Avisto Eastern Europe'.</msg>
+<status status="PASS" starttime="20250106 08:46:40.624" endtime="20250106 08:46:40.643"/>
 </kw>
-<kw name="Search For 'Browse' Button">
-<doc>This keyword checks if the 'Browse' button is present and clickable.</doc>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<arg>window.scrollTo(0, document.body.scrollHeight / 2);</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20250105 14:10:23.613" level="INFO">Executing JavaScript:
-window.scrollTo(0, document.body.scrollHeight / 2);
-Without any arguments.</msg>
-<status status="PASS" starttime="20250105 14:10:23.612" endtime="20250105 14:10:23.654"/>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>https://www.avisto-eastern.com/about-us/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20250106 08:46:40.654" level="INFO">Current location is 'https://www.avisto-eastern.com/about-us/'.</msg>
+<status status="PASS" starttime="20250106 08:46:40.643" endtime="20250106 08:46:40.654"/>
 </kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${BROWSE_BUTTON}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250105 14:10:23.655" endtime="20250105 14:10:24.083"/>
+<status status="PASS" starttime="20250106 08:46:37.977" endtime="20250106 08:46:40.654"/>
 </kw>
-<kw name="Element Should Be Enabled" library="SeleniumLibrary">
-<arg>${BROWSE_BUTTON}</arg>
-<doc>Verifies that element identified by ``locator`` is enabled.</doc>
-<status status="PASS" starttime="20250105 14:10:24.084" endtime="20250105 14:10:24.165"/>
+<kw name="Click Avisto Logo">
+<doc>This keyword clicks on the Avisto logo and verifies that the homepage is opened.
+It checks that after clicking the logo, the browser navigates back to the homepage URL https://www.avisto-eastern.com/.</doc>
+<kw name="Click Image" library="SeleniumLibrary">
+<arg>xpath=//img[@class='mobile']</arg>
+<doc>Clicks an image identified by ``locator``.</doc>
+<msg timestamp="20250106 08:46:40.654" level="INFO">Clicking image 'xpath=//img[@class='mobile']'.</msg>
+<status status="PASS" starttime="20250106 08:46:40.654" endtime="20250106 08:46:42.690"/>
 </kw>
-<status status="PASS" starttime="20250105 14:10:23.610" endtime="20250105 14:10:24.167"/>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Home &lt; Avisto Eastern Europe</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20250106 08:46:42.744" level="INFO">Page title is 'Home &lt; Avisto Eastern Europe'.</msg>
+<status status="PASS" starttime="20250106 08:46:42.690" endtime="20250106 08:46:42.744"/>
 </kw>
-<kw name="Search For 'Contact Us' Button">
-<doc>This keyword checks if the 'Contact Us' button is present and clickable.</doc>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<arg>window.scrollTo(0, document.body.scrollHeight);</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20250105 14:10:24.169" level="INFO">Executing JavaScript:
-window.scrollTo(0, document.body.scrollHeight);
-Without any arguments.</msg>
-<status status="PASS" starttime="20250105 14:10:24.167" endtime="20250105 14:10:24.197"/>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>https://www.avisto-eastern.com/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20250106 08:46:42.763" level="INFO">Current location is 'https://www.avisto-eastern.com/'.</msg>
+<status status="PASS" starttime="20250106 08:46:42.745" endtime="20250106 08:46:42.763"/>
 </kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>//a[@class='elementor-button elementor-button-link elementor-size-md elementor-animation-shrink' and .//span[text()='Contact us']]</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250105 14:10:24.198" endtime="20250105 14:10:24.738"/>
-</kw>
-<kw name="Element Should Be Enabled" library="SeleniumLibrary">
-<arg>//a[@class='elementor-button elementor-button-link elementor-size-md elementor-animation-shrink' and .//span[text()='Contact us']]</arg>
-<doc>Verifies that element identified by ``locator`` is enabled.</doc>
-<status status="PASS" starttime="20250105 14:10:24.739" endtime="20250105 14:10:24.808"/>
-</kw>
-<status status="PASS" starttime="20250105 14:10:24.167" endtime="20250105 14:10:24.808"/>
+<status status="PASS" starttime="20250106 08:46:40.654" endtime="20250106 08:46:42.763"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20250105 14:10:24.808" endtime="20250105 14:10:27.257"/>
+<status status="PASS" starttime="20250106 08:46:42.765" endtime="20250106 08:46:45.388"/>
 </kw>
-<doc>This test case checks if the main page of the website is available, the necessary menu items are present, the Avisto logo exists, and the "Browse" and "Contact Us" buttons are clickable.</doc>
-<status status="PASS" starttime="20250105 14:10:00.958" endtime="20250105 14:10:27.257"/>
+<doc>This test case verifies the behavior of the "About Us" menu.
+It checks the following:
+1. Hovering over the "About Us" menu reveals the sub-menu items.
+2. Clicking the "About Us" menu item navigates to the About Us page.
+3. Clicking the Avisto logo navigates back to the homepage.</doc>
+<status status="PASS" starttime="20250106 08:45:56.876" endtime="20250106 08:46:45.388"/>
 </test>
-<status status="PASS" starttime="20250105 14:10:00.583" endtime="20250105 14:10:27.257"/>
+<status status="PASS" starttime="20250106 08:45:56.266" endtime="20250106 08:46:45.403"/>
 </suite>
 <statistics>
 <total>
@@ -172,7 +191,7 @@ Without any arguments.</msg>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="TC1">TC1</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="TC5">TC5</stat>
 </suite>
 </statistics>
 <errors>

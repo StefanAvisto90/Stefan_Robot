@@ -7,7 +7,7 @@ ${EXPERTISE_LINKS}    Application Software, Embedded Software, DevOps, Quality A
 ${USEFUL_LINKS}       Contact Us, Open Positions, ISO certificates, Case Studies
 
 *** Test Cases ***
-Check Main Page Footer
+TC2: Check Main Page Footer
     Open Browser    ${URL}    Chrome
     Maximize Browser Window
     Title Should Be    Home < Avisto Eastern Europe

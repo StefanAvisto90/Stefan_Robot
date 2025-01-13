@@ -8,7 +8,7 @@ ${TIMEOUT}    10s
 ${BROWSE_BUTTON}        //a[contains(@class, 'elementor-button-link') and .//span[contains(text(), 'BROWSE')]]
 
 *** Test Cases ***
-Check Main Page is Available
+TC1: Check Main Page is Available
     [Documentation]    This test case checks if the main page of the website is available, the necessary menu items are present, the Avisto logo exists, and the "Browse" and "Contact Us" buttons are clickable.
     Open Browser    ${URL}    chrome
     Maximize Browser Window

@@ -8,7 +8,7 @@ ${USEFUL_LINKS}       Contact Us, Open Positions, ISO certificates, Case Studies
 
 
 *** Test Cases ***
-Check Main Page Footer
+TC3: Check Main Page Footer
     Open Browser    ${URL}    Chrome
     Maximize Browser Window
     Title Should Be    Home < Avisto Eastern Europe

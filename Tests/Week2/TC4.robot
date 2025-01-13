@@ -5,7 +5,7 @@ Library    SeleniumLibrary
 ${URL}          https://www.avisto-eastern.com/
 
 *** Test Cases ***
-TC3: Check Case Studies Menu
+TC4: Check Case Studies Menu
     [Documentation]    This test case verifies the behavior of the "Case Studies" menu.
     ...                It checks that hovering over the "Case Studies" menu does not reveal any sub-menu items,
     ...                clicking the "Case Studies" menu item navigates to the case studies page, and clicking
@@ -24,7 +24,7 @@ Mouse Over Case Studies Menu
     [Documentation]    This keyword hovers the mouse over the "Case Studies" menu and ensures no sub-menu items are displayed.
     ...                 Not sure how to test that
     mouse over    xpath=//span[normalize-space(text())='Case Studies']
-    Wait Until Page Contains    Case Studies
+    Element Should Not Be Visible    xpath=//li[@id='nav-menu-item-18457']/div
 
 Click Case Studies Menu Item
     [Documentation]    This keyword clicks the "Case Studies" menu item and verifies that the URL is correct (https://www.avisto-eastern.com/case-studies/).

@@ -5,7 +5,7 @@ Library    SeleniumLibrary
 ${URL}          https://www.avisto-eastern.com/
 
 *** Test Cases ***
-TC1: Check About Us Menu
+TC6: Check About Us Menu
     [Documentation]    This test case verifies the behavior of the "Career" menu.
     ...                It checks the following:
     ...                1. Hovering over the "Career" menu reveals the sub-menu items.

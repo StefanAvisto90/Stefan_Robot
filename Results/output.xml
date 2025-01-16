@@ -1,1293 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1 (Python 3.11.9 on win32)" generated="20250115 12:14:50.463" rpa="false" schemaversion="4">
-<suite id="s1" name="TC9" source="C:\Users\Win10\Downloads\Stefan_Robot-master\Tests\Week2\TC9.robot">
-<test id="s1-t1" name="TC9: Contact Us Form Interaction" line="12">
+<robot generator="Robot 6.1 (Python 3.11.9 on win32)" generated="20250116 10:03:10.452" rpa="false" schemaversion="4">
+<suite id="s1" name="TC10" source="C:\Users\Win10\Downloads\Stefan_Robot-master\Tests\Week2\TC10.robot">
+<test id="s1-t1" name="TC10: Check links to expertise domains" line="13">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${URL}</arg>
-<arg>Chrome</arg>
+<arg>chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20250115 12:14:50.963" level="INFO">Opening browser 'Chrome' to base url 'https://www.avisto-eastern.com/'.</msg>
-<status status="PASS" starttime="20250115 12:14:50.963" endtime="20250115 12:14:58.735"/>
+<msg timestamp="20250116 10:03:10.796" level="INFO">Opening browser 'chrome' to base url 'https://www.avisto-eastern.com'.</msg>
+<status status="PASS" starttime="20250116 10:03:10.796" endtime="20250116 10:03:17.825"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20250115 12:14:58.737" endtime="20250115 12:14:59.200"/>
-</kw>
-<kw name="Click Contact Us Menu Item">
-<doc>This keyword clicks on the "Contact Us" menu item and verifies that the Contact Us page is opened.</doc>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath=//span[normalize-space(text())='Contact Us']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20250115 12:14:59.351" level="INFO">Clicking element 'xpath=//span[normalize-space(text())='Contact Us']'.</msg>
-<status status="PASS" starttime="20250115 12:14:59.347" endtime="20250115 12:15:01.981"/>
-</kw>
-<kw name="Location Should Be" library="SeleniumLibrary">
-<arg>https://www.avisto-eastern.com/contact-us/</arg>
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<msg timestamp="20250115 12:15:01.997" level="INFO">Current location is 'https://www.avisto-eastern.com/contact-us/'.</msg>
-<status status="PASS" starttime="20250115 12:15:01.981" endtime="20250115 12:15:01.997"/>
-</kw>
-<status status="PASS" starttime="20250115 12:14:59.346" endtime="20250115 12:15:01.997"/>
-</kw>
-<kw name="Look For Existing Fields">
-<doc>This keyword verifies that the following fields exist on the Contact Us page: First Name, Last Name, Email, Website, and Message.</doc>
-<kw name="Create List" library="BuiltIn">
-<var>${fields}</var>
-<arg>first-name</arg>
-<arg>last-name</arg>
-<arg>your-email</arg>
-<arg>web-site</arg>
-<arg>your-message</arg>
-<doc>Returns a list containing given items.</doc>
-<msg timestamp="20250115 12:15:01.997" level="INFO">${fields} = ['first-name', 'last-name', 'your-email', 'web-site', 'your-message']</msg>
-<status status="PASS" starttime="20250115 12:15:01.997" endtime="20250115 12:15:01.997"/>
-</kw>
-<for flavor="IN">
-<var>${field}</var>
-<value>@{fields}</value>
-<iter>
-<var name="${field}">first-name</var>
-<kw name="Set Variable" library="BuiltIn">
-<var>${xpath}</var>
-<arg>xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//textarea</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250115 12:15:01.997" level="INFO">${xpath} = xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='first-name']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='first-name']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:01.997" endtime="20250115 12:15:01.997"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>XPath for field ${field}: ${xpath}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:01.997" level="INFO">XPath for field first-name: xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='first-name']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='first-name']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:01.997" endtime="20250115 12:15:01.997"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${xpath}</arg>
-<arg>timeout=5</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:01.997" endtime="20250115 12:15:02.094"/>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${empty_field}</var>
-<arg>${xpath}</arg>
-<arg>value</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20250115 12:15:02.160" level="INFO">${empty_field} = </msg>
-<status status="PASS" starttime="20250115 12:15:02.095" endtime="20250115 12:15:02.160"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Retrieved value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.161" level="INFO">Retrieved value for field first-name: ''</msg>
-<status status="PASS" starttime="20250115 12:15:02.161" endtime="20250115 12:15:02.161"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == 'None'</arg>
-<arg>Set Variable</arg>
-<arg>${empty_field}</arg>
-<arg>''</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:02.162" endtime="20250115 12:15:02.162"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Final value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.162" level="INFO">Final value for field first-name: ''</msg>
-<status status="PASS" starttime="20250115 12:15:02.162" endtime="20250115 12:15:02.162"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == ''</arg>
-<arg>Log</arg>
-<arg>Field is empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="Log" library="BuiltIn">
-<arg>Field is empty</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.162" level="INFO">Field is empty</msg>
-<status status="PASS" starttime="20250115 12:15:02.162" endtime="20250115 12:15:02.162"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:02.162" endtime="20250115 12:15:02.162"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' != ''</arg>
-<arg>fail</arg>
-<arg>Field is NOT empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:02.162" endtime="20250115 12:15:02.162"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:01.997" endtime="20250115 12:15:02.162"/>
-</iter>
-<iter>
-<var name="${field}">last-name</var>
-<kw name="Set Variable" library="BuiltIn">
-<var>${xpath}</var>
-<arg>xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//textarea</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250115 12:15:02.162" level="INFO">${xpath} = xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='last-name']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='last-name']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:02.162" endtime="20250115 12:15:02.162"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>XPath for field ${field}: ${xpath}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.162" level="INFO">XPath for field last-name: xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='last-name']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='last-name']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:02.162" endtime="20250115 12:15:02.162"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${xpath}</arg>
-<arg>timeout=5</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:02.162" endtime="20250115 12:15:02.250"/>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${empty_field}</var>
-<arg>${xpath}</arg>
-<arg>value</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20250115 12:15:02.330" level="INFO">${empty_field} = </msg>
-<status status="PASS" starttime="20250115 12:15:02.250" endtime="20250115 12:15:02.330"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Retrieved value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.330" level="INFO">Retrieved value for field last-name: ''</msg>
-<status status="PASS" starttime="20250115 12:15:02.330" endtime="20250115 12:15:02.330"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == 'None'</arg>
-<arg>Set Variable</arg>
-<arg>${empty_field}</arg>
-<arg>''</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:02.330" endtime="20250115 12:15:02.332"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Final value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.332" level="INFO">Final value for field last-name: ''</msg>
-<status status="PASS" starttime="20250115 12:15:02.332" endtime="20250115 12:15:02.333"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == ''</arg>
-<arg>Log</arg>
-<arg>Field is empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="Log" library="BuiltIn">
-<arg>Field is empty</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.335" level="INFO">Field is empty</msg>
-<status status="PASS" starttime="20250115 12:15:02.333" endtime="20250115 12:15:02.335"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:02.333" endtime="20250115 12:15:02.335"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' != ''</arg>
-<arg>fail</arg>
-<arg>Field is NOT empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:02.335" endtime="20250115 12:15:02.335"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:02.162" endtime="20250115 12:15:02.336"/>
-</iter>
-<iter>
-<var name="${field}">your-email</var>
-<kw name="Set Variable" library="BuiltIn">
-<var>${xpath}</var>
-<arg>xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//textarea</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250115 12:15:02.338" level="INFO">${xpath} = xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='your-email']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='your-email']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:02.337" endtime="20250115 12:15:02.338"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>XPath for field ${field}: ${xpath}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.340" level="INFO">XPath for field your-email: xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='your-email']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='your-email']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:02.339" endtime="20250115 12:15:02.340"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${xpath}</arg>
-<arg>timeout=5</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:02.340" endtime="20250115 12:15:02.410"/>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${empty_field}</var>
-<arg>${xpath}</arg>
-<arg>value</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20250115 12:15:02.461" level="INFO">${empty_field} = </msg>
-<status status="PASS" starttime="20250115 12:15:02.410" endtime="20250115 12:15:02.461"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Retrieved value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.462" level="INFO">Retrieved value for field your-email: ''</msg>
-<status status="PASS" starttime="20250115 12:15:02.461" endtime="20250115 12:15:02.462"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == 'None'</arg>
-<arg>Set Variable</arg>
-<arg>${empty_field}</arg>
-<arg>''</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:02.462" endtime="20250115 12:15:02.462"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Final value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.462" level="INFO">Final value for field your-email: ''</msg>
-<status status="PASS" starttime="20250115 12:15:02.462" endtime="20250115 12:15:02.462"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == ''</arg>
-<arg>Log</arg>
-<arg>Field is empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="Log" library="BuiltIn">
-<arg>Field is empty</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.464" level="INFO">Field is empty</msg>
-<status status="PASS" starttime="20250115 12:15:02.464" endtime="20250115 12:15:02.464"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:02.464" endtime="20250115 12:15:02.464"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' != ''</arg>
-<arg>fail</arg>
-<arg>Field is NOT empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:02.464" endtime="20250115 12:15:02.464"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:02.336" endtime="20250115 12:15:02.464"/>
-</iter>
-<iter>
-<var name="${field}">web-site</var>
-<kw name="Set Variable" library="BuiltIn">
-<var>${xpath}</var>
-<arg>xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//textarea</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250115 12:15:02.466" level="INFO">${xpath} = xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='web-site']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='web-site']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:02.464" endtime="20250115 12:15:02.466"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>XPath for field ${field}: ${xpath}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.466" level="INFO">XPath for field web-site: xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='web-site']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='web-site']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:02.466" endtime="20250115 12:15:02.466"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${xpath}</arg>
-<arg>timeout=5</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:02.466" endtime="20250115 12:15:02.649"/>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${empty_field}</var>
-<arg>${xpath}</arg>
-<arg>value</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20250115 12:15:02.691" level="INFO">${empty_field} = </msg>
-<status status="PASS" starttime="20250115 12:15:02.649" endtime="20250115 12:15:02.691"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Retrieved value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.691" level="INFO">Retrieved value for field web-site: ''</msg>
-<status status="PASS" starttime="20250115 12:15:02.691" endtime="20250115 12:15:02.692"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == 'None'</arg>
-<arg>Set Variable</arg>
-<arg>${empty_field}</arg>
-<arg>''</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:02.692" endtime="20250115 12:15:02.692"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Final value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.693" level="INFO">Final value for field web-site: ''</msg>
-<status status="PASS" starttime="20250115 12:15:02.692" endtime="20250115 12:15:02.693"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == ''</arg>
-<arg>Log</arg>
-<arg>Field is empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="Log" library="BuiltIn">
-<arg>Field is empty</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.694" level="INFO">Field is empty</msg>
-<status status="PASS" starttime="20250115 12:15:02.693" endtime="20250115 12:15:02.694"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:02.693" endtime="20250115 12:15:02.694"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' != ''</arg>
-<arg>fail</arg>
-<arg>Field is NOT empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:02.694" endtime="20250115 12:15:02.694"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:02.464" endtime="20250115 12:15:02.694"/>
-</iter>
-<iter>
-<var name="${field}">your-message</var>
-<kw name="Set Variable" library="BuiltIn">
-<var>${xpath}</var>
-<arg>xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//textarea</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250115 12:15:02.694" level="INFO">${xpath} = xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='your-message']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='your-message']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:02.694" endtime="20250115 12:15:02.694"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>XPath for field ${field}: ${xpath}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.695" level="INFO">XPath for field your-message: xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='your-message']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='your-message']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:02.694" endtime="20250115 12:15:02.695"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${xpath}</arg>
-<arg>timeout=5</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:02.695" endtime="20250115 12:15:02.732"/>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${empty_field}</var>
-<arg>${xpath}</arg>
-<arg>value</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20250115 12:15:02.772" level="INFO">${empty_field} = </msg>
-<status status="PASS" starttime="20250115 12:15:02.733" endtime="20250115 12:15:02.772"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Retrieved value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.773" level="INFO">Retrieved value for field your-message: ''</msg>
-<status status="PASS" starttime="20250115 12:15:02.773" endtime="20250115 12:15:02.774"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == 'None'</arg>
-<arg>Set Variable</arg>
-<arg>${empty_field}</arg>
-<arg>''</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:02.775" endtime="20250115 12:15:02.775"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Final value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.775" level="INFO">Final value for field your-message: ''</msg>
-<status status="PASS" starttime="20250115 12:15:02.775" endtime="20250115 12:15:02.776"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == ''</arg>
-<arg>Log</arg>
-<arg>Field is empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="Log" library="BuiltIn">
-<arg>Field is empty</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:02.776" level="INFO">Field is empty</msg>
-<status status="PASS" starttime="20250115 12:15:02.776" endtime="20250115 12:15:02.776"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:02.776" endtime="20250115 12:15:02.776"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' != ''</arg>
-<arg>fail</arg>
-<arg>Field is NOT empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:02.776" endtime="20250115 12:15:02.776"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:02.694" endtime="20250115 12:15:02.776"/>
-</iter>
-<status status="PASS" starttime="20250115 12:15:01.997" endtime="20250115 12:15:02.776"/>
-</for>
-<status status="PASS" starttime="20250115 12:15:01.997" endtime="20250115 12:15:02.776"/>
-</kw>
-<kw name="Look For Privacy Checkbox">
-<doc>This keyword verifies that the Privacy Policy checkbox exists and is not selected.</doc>
-<kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>xpath=//input[@type='checkbox' and @name='acceptance-376']</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20250115 12:15:02.817" level="INFO">Element 'xpath=//input[@type='checkbox' and @name='acceptance-376']' is displayed.</msg>
-<status status="PASS" starttime="20250115 12:15:02.777" endtime="20250115 12:15:02.817"/>
-</kw>
-<kw name="Checkbox Should Not Be Selected" library="SeleniumLibrary">
-<arg>xpath=//input[@type='checkbox' and @name='acceptance-376']</arg>
-<doc>Verifies checkbox ``locator`` is not selected/checked.</doc>
-<msg timestamp="20250115 12:15:02.817" level="INFO">Verifying checkbox 'xpath=//input[@type='checkbox' and @name='acceptance-376']' is not selected.</msg>
-<status status="PASS" starttime="20250115 12:15:02.817" endtime="20250115 12:15:02.895"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:02.777" endtime="20250115 12:15:02.895"/>
-</kw>
-<kw name="Look For Send Button">
-<doc>This keyword verifies that the Send button exists but is not clickable.</doc>
-<kw name="Element Should Be Disabled" library="SeleniumLibrary">
-<arg>xpath=//input[@class='wpcf7-form-control wpcf7-submit has-spinner' and @type='submit' and @value='Send']</arg>
-<doc>Verifies that element identified by ``locator`` is disabled.</doc>
-<status status="PASS" starttime="20250115 12:15:02.897" endtime="20250115 12:15:02.942"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:02.896" endtime="20250115 12:15:02.942"/>
+<status status="PASS" starttime="20250116 10:03:17.829" endtime="20250116 10:03:18.160"/>
 </kw>
 <kw name="Scroll Down">
 <doc>This keyword scrolls down the page.</doc>
 <kw name="Execute Javascript" library="SeleniumLibrary">
-<arg>window.scrollBy(0, 500)</arg>
+<arg>window.scrollBy(0, 1000)</arg>
 <doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20250115 12:15:02.943" level="INFO">Executing JavaScript:
-window.scrollBy(0, 500)
+<msg timestamp="20250116 10:03:18.223" level="INFO">Executing JavaScript:
+window.scrollBy(0, 1000)
 Without any arguments.</msg>
-<status status="PASS" starttime="20250115 12:15:02.942" endtime="20250115 12:15:02.956"/>
+<status status="PASS" starttime="20250116 10:03:18.212" endtime="20250116 10:03:18.317"/>
 </kw>
-<status status="PASS" starttime="20250115 12:15:02.942" endtime="20250115 12:15:02.956"/>
+<status status="PASS" starttime="20250116 10:03:18.212" endtime="20250116 10:03:18.317"/>
 </kw>
-<kw name="Select Privacy Policy Checkbox">
-<doc>This keyword selects the Privacy Policy checkbox.</doc>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>xpath=//input[@type='checkbox' and @name='acceptance-376']</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:02.957" endtime="20250115 12:15:03.024"/>
-</kw>
-<kw name="Select Checkbox" library="SeleniumLibrary">
-<arg>xpath=//input[@type='checkbox' and @name='acceptance-376']</arg>
-<doc>Selects the checkbox identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:03.025" level="INFO">Selecting checkbox 'xpath=//input[@type='checkbox' and @name='acceptance-376']'.</msg>
-<status status="PASS" starttime="20250115 12:15:03.025" endtime="20250115 12:15:03.308"/>
-</kw>
-<kw name="Checkbox Should Be Selected" library="SeleniumLibrary">
-<arg>xpath=//input[@type='checkbox' and @name='acceptance-376']</arg>
-<doc>Verifies checkbox ``locator`` is selected/checked.</doc>
-<msg timestamp="20250115 12:15:03.309" level="INFO">Verifying checkbox 'xpath=//input[@type='checkbox' and @name='acceptance-376']' is selected.</msg>
-<status status="PASS" starttime="20250115 12:15:03.308" endtime="20250115 12:15:03.501"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:02.957" endtime="20250115 12:15:03.501"/>
-</kw>
-<kw name="Click Send Button">
-<doc>This keyword clicks the Send button and verifies that the error message is shown if the form is incomplete.</doc>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>xpath=//input[@class='wpcf7-form-control wpcf7-submit has-spinner' and @type='submit' and @value='Send']</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:03.506" level="INFO">Clicking button 'xpath=//input[@class='wpcf7-form-control wpcf7-submit has-spinner' and @type='submit' and @value='Send']'.</msg>
-<status status="PASS" starttime="20250115 12:15:03.504" endtime="20250115 12:15:03.721"/>
+<kw name="Click Lean More Button For Application Software">
+<doc>Clicks the "Lean more" button for the Application Software domain.</doc>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath=//section[@class='elementor-section elementor-top-section elementor-element elementor-element-58cac98 elementor-section-boxed elementor-section-height-default elementor-section-height-default parallax_section_no qode_elementor_container_no']//div[@class='elementor-container elementor-column-gap-default']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20250116 10:03:18.320" endtime="20250116 10:03:18.349"/>
 </kw>
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>xpath=(//div[@class='wpcf7-response-output'])[1]</arg>
-<arg>3s</arg>
+<arg>xpath=//a[@href='https://www.avisto-eastern.com/expertise/application-software/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:03.721" endtime="20250115 12:15:04.314"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:03.502" endtime="20250115 12:15:04.314"/>
-</kw>
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<arg>xpath=(//div[@class='wpcf7-response-output'])[1]</arg>
-<arg>ONE OR MORE FIELDS HAVE AN ERROR. PLEASE CHECK AND TRY AGAIN.</arg>
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<msg timestamp="20250115 12:15:04.364" level="INFO">Element 'xpath=(//div[@class='wpcf7-response-output'])[1]' contains text 'ONE OR MORE FIELDS HAVE AN ERROR. PLEASE CHECK AND TRY AGAIN.'.</msg>
-<status status="PASS" starttime="20250115 12:15:04.314" endtime="20250115 12:15:04.364"/>
-</kw>
-<kw name="Check Error Properties">
-<doc>This keyword checks the error properties to ensure the error message is not visible.</doc>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<var>${bg_color}</var>
-<arg>return window.getComputedStyle(document.querySelector('.wpcf7-response-output')).backgroundColor</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20250115 12:15:04.366" level="INFO">Executing JavaScript:
-return window.getComputedStyle(document.querySelector('.wpcf7-response-output')).backgroundColor
-Without any arguments.</msg>
-<msg timestamp="20250115 12:15:04.379" level="INFO">${bg_color} = rgba(0, 0, 0, 0)</msg>
-<status status="PASS" starttime="20250115 12:15:04.365" endtime="20250115 12:15:04.379"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Background Color: ${bg_color}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:04.379" level="INFO">Background Color: rgba(0, 0, 0, 0)</msg>
-<status status="PASS" starttime="20250115 12:15:04.379" endtime="20250115 12:15:04.379"/>
-</kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${alpha_value}</var>
-<arg>float('${bg_color.split(",")[-1].strip()[:-1]}')</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250115 12:15:04.381" level="INFO">${alpha_value} = 0.0</msg>
-<status status="PASS" starttime="20250115 12:15:04.379" endtime="20250115 12:15:04.381"/>
-</kw>
-<kw name="Run Keyword And Ignore Error" library="BuiltIn">
-<arg>Should Be True</arg>
-<arg>${alpha_value} &gt; 0</arg>
-<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
-<kw name="Should Be True" library="BuiltIn">
-<arg>${alpha_value} &gt; 0</arg>
-<doc>Fails if the given condition is not true.</doc>
-<msg timestamp="20250115 12:15:04.382" level="FAIL">'0.0 &gt; 0' should be true.</msg>
-<status status="FAIL" starttime="20250115 12:15:04.382" endtime="20250115 12:15:04.382"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:04.381" endtime="20250115 12:15:04.383"/>
-</kw>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<var>${fg_color}</var>
-<arg>return window.getComputedStyle(document.querySelector('.wpcf7-response-output')).color</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20250115 12:15:04.385" level="INFO">Executing JavaScript:
-return window.getComputedStyle(document.querySelector('.wpcf7-response-output')).color
-Without any arguments.</msg>
-<msg timestamp="20250115 12:15:04.397" level="INFO">${fg_color} = rgb(255, 255, 255)</msg>
-<status status="PASS" starttime="20250115 12:15:04.383" endtime="20250115 12:15:04.397"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Foreground Color: ${fg_color}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:04.397" level="INFO">Foreground Color: rgb(255, 255, 255)</msg>
-<status status="PASS" starttime="20250115 12:15:04.397" endtime="20250115 12:15:04.397"/>
-</kw>
-<kw name="Run Keyword And Ignore Error" library="BuiltIn">
-<arg>Should Contain</arg>
-<arg>${bg_color}</arg>
-<arg>rgb(255, 255, 255)</arg>
-<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${bg_color}</arg>
-<arg>rgb(255, 255, 255)</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<msg timestamp="20250115 12:15:04.399" level="FAIL">'rgba(0, 0, 0, 0)' does not contain 'rgb(255, 255, 255)'</msg>
-<status status="FAIL" starttime="20250115 12:15:04.398" endtime="20250115 12:15:04.399"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:04.398" endtime="20250115 12:15:04.399"/>
-</kw>
-<kw name="Run Keyword And Ignore Error" library="BuiltIn">
-<arg>Should Be Equal As Strings</arg>
-<arg>${fg_color}</arg>
-<arg>rgb(255, 255, 255)</arg>
-<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${fg_color}</arg>
-<arg>rgb(255, 255, 255)</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20250115 12:15:04.399" endtime="20250115 12:15:04.399"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:04.399" endtime="20250115 12:15:04.399"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:04.365" endtime="20250115 12:15:04.400"/>
-</kw>
-<kw name="Unselect Privacy Checkbox and Reload Page">
-<doc>This keyword unselects the Privacy Policy checkbox and reloads the page.</doc>
-<kw name="Unselect Checkbox" library="SeleniumLibrary">
-<arg>xpath=//input[@type='checkbox' and @name='acceptance-376']</arg>
-<doc>Removes the selection of checkbox identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:04.403" level="INFO">Unselecting checkbox 'xpath=//input[@type='checkbox' and @name='acceptance-376']'.</msg>
-<status status="PASS" starttime="20250115 12:15:04.401" endtime="20250115 12:15:04.599"/>
-</kw>
-<kw name="Checkbox Should Not Be Selected" library="SeleniumLibrary">
-<arg>xpath=//input[@type='checkbox' and @name='acceptance-376']</arg>
-<doc>Verifies checkbox ``locator`` is not selected/checked.</doc>
-<msg timestamp="20250115 12:15:04.603" level="INFO">Verifying checkbox 'xpath=//input[@type='checkbox' and @name='acceptance-376']' is not selected.</msg>
-<status status="PASS" starttime="20250115 12:15:04.599" endtime="20250115 12:15:04.708"/>
-</kw>
-<kw name="Reload Page" library="SeleniumLibrary">
-<doc>Simulates user reloading page.</doc>
-<status status="PASS" starttime="20250115 12:15:04.708" endtime="20250115 12:15:06.345"/>
-</kw>
-<kw name="Page Should Not Contain" library="SeleniumLibrary">
-<arg>xpath=//span[@data-name='first-name']//span[@class='wpcf7-not-valid-tip'][normalize-space()='The field is required.']</arg>
-<doc>Verifies the current page does not contain ``text``.</doc>
-<msg timestamp="20250115 12:15:07.589" level="INFO">Current page does not contain text 'xpath=//span[@data-name='first-name']//span[@class='wpcf7-not-valid-tip'][normalize-space()='The field is required.']'.</msg>
-<status status="PASS" starttime="20250115 12:15:06.345" endtime="20250115 12:15:07.591"/>
-</kw>
-<kw name="Page Should Not Contain" library="SeleniumLibrary">
-<arg>xpath=//span[@data-name='last-name']//span[@class='wpcf7-not-valid-tip'][normalize-space()='The field is required.']</arg>
-<doc>Verifies the current page does not contain ``text``.</doc>
-<msg timestamp="20250115 12:15:08.080" level="INFO">Current page does not contain text 'xpath=//span[@data-name='last-name']//span[@class='wpcf7-not-valid-tip'][normalize-space()='The field is required.']'.</msg>
-<status status="PASS" starttime="20250115 12:15:07.592" endtime="20250115 12:15:08.080"/>
-</kw>
-<kw name="Page Should Not Contain" library="SeleniumLibrary">
-<arg>xpath=//span[@data-name='your-email']//span[@class='wpcf7-not-valid-tip'][normalize-space()='The field is required.']</arg>
-<doc>Verifies the current page does not contain ``text``.</doc>
-<msg timestamp="20250115 12:15:08.496" level="INFO">Current page does not contain text 'xpath=//span[@data-name='your-email']//span[@class='wpcf7-not-valid-tip'][normalize-space()='The field is required.']'.</msg>
-<status status="PASS" starttime="20250115 12:15:08.080" endtime="20250115 12:15:08.496"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:04.401" endtime="20250115 12:15:08.496"/>
-</kw>
-<kw name="Enter 'John' for First Name">
-<doc>This keyword enters the value 'John' for the First Name field.</doc>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>xpath=//input[@placeholder='First name*']</arg>
-<arg>${FIRST_NAME}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:08.498" level="INFO">Typing text 'John' into text field 'xpath=//input[@placeholder='First name*']'.</msg>
-<status status="PASS" starttime="20250115 12:15:08.497" endtime="20250115 12:15:08.772"/>
-</kw>
-<kw name="Get Value" library="SeleniumLibrary">
-<var>${entered_first_name}</var>
-<arg>xpath=//input[@placeholder='First name*']</arg>
-<doc>Returns the value attribute of the element identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:08.815" level="INFO">${entered_first_name} = John</msg>
-<status status="PASS" starttime="20250115 12:15:08.772" endtime="20250115 12:15:08.815"/>
-</kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${entered_first_name}</arg>
-<arg>${FIRST_NAME}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20250115 12:15:08.816" endtime="20250115 12:15:08.816"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:08.497" endtime="20250115 12:15:08.817"/>
-</kw>
-<kw name="Enter 'Doe' for Last Name">
-<doc>This keyword enters the value 'Doe' for the Last Name field.</doc>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>xpath=//input[@placeholder='Last name*']</arg>
-<arg>${LAST_NAME}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:08.819" level="INFO">Typing text 'Doe' into text field 'xpath=//input[@placeholder='Last name*']'.</msg>
-<status status="PASS" starttime="20250115 12:15:08.817" endtime="20250115 12:15:09.145"/>
-</kw>
-<kw name="Get Value" library="SeleniumLibrary">
-<var>${entered_last_name}</var>
-<arg>xpath=//input[@placeholder='Last name*']</arg>
-<doc>Returns the value attribute of the element identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:09.201" level="INFO">${entered_last_name} = Doe</msg>
-<status status="PASS" starttime="20250115 12:15:09.146" endtime="20250115 12:15:09.201"/>
-</kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${entered_last_name}</arg>
-<arg>${LAST_NAME}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20250115 12:15:09.201" endtime="20250115 12:15:09.202"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:08.817" endtime="20250115 12:15:09.203"/>
-</kw>
-<kw name="Enter 'john.doe.test' for Email and Click Into Message Field">
-<doc>This keyword enters an invalid email ('john.doe.test') for the Email field.</doc>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>xpath=//input[@placeholder='Email*']</arg>
-<arg>john.doe.test</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:09.207" level="INFO">Typing text 'john.doe.test' into text field 'xpath=//input[@placeholder='Email*']'.</msg>
-<status status="PASS" starttime="20250115 12:15:09.205" endtime="20250115 12:15:09.528"/>
-</kw>
-<kw name="Get Value" library="SeleniumLibrary">
-<var>${entered_email}</var>
-<arg>xpath=//input[@placeholder='Email*']</arg>
-<doc>Returns the value attribute of the element identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:09.579" level="INFO">${entered_email} = john.doe.test</msg>
-<status status="PASS" starttime="20250115 12:15:09.528" endtime="20250115 12:15:09.579"/>
-</kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${entered_email}</arg>
-<arg>john.doe.test</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20250115 12:15:09.579" endtime="20250115 12:15:09.579"/>
-</kw>
-<kw name="Click Into Message Field">
-<doc>This keyword clicks into the message field and verifies the error for invalid email.</doc>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>xpath=//textarea[@placeholder='Your Message']</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:09.580" endtime="20250115 12:15:09.632"/>
+<status status="PASS" starttime="20250116 10:03:18.349" endtime="20250116 10:03:18.754"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath=//textarea[@placeholder='Your Message']</arg>
+<arg>xpath=//a[@href='https://www.avisto-eastern.com/expertise/application-software/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:09.635" level="INFO">Clicking element 'xpath=//textarea[@placeholder='Your Message']'.</msg>
-<status status="PASS" starttime="20250115 12:15:09.633" endtime="20250115 12:15:09.900"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:09.579" endtime="20250115 12:15:09.900"/>
-</kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<arg>xpath=//span[@class='wpcf7-not-valid-tip'][normalize-space()='The e-mail address entered is invalid.']</arg>
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<msg timestamp="20250115 12:15:09.948" level="INFO">Current page contains element 'xpath=//span[@class='wpcf7-not-valid-tip'][normalize-space()='The e-mail address entered is invalid.']'.</msg>
-<status status="PASS" starttime="20250115 12:15:09.902" endtime="20250115 12:15:09.949"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:09.204" endtime="20250115 12:15:09.949"/>
-</kw>
-<kw name="Enter 'john.doe.test@gmail.com' for Email and Click Into Message Field">
-<doc>This keyword enters a valid email ('john.doe.test@gmail.com') and verifies no error appears.</doc>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>xpath=//input[@placeholder='Email*']</arg>
-<arg>${EMAIL}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:09.953" level="INFO">Typing text 'john.doe.test@gmail.com' into text field 'xpath=//input[@placeholder='Email*']'.</msg>
-<status status="PASS" starttime="20250115 12:15:09.951" endtime="20250115 12:15:10.420"/>
-</kw>
-<kw name="Click Into Message Field">
-<doc>This keyword clicks into the message field and verifies the error for invalid email.</doc>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>xpath=//textarea[@placeholder='Your Message']</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:10.421" endtime="20250115 12:15:10.469"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath=//textarea[@placeholder='Your Message']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:10.474" level="INFO">Clicking element 'xpath=//textarea[@placeholder='Your Message']'.</msg>
-<status status="PASS" starttime="20250115 12:15:10.469" endtime="20250115 12:15:10.760"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:10.420" endtime="20250115 12:15:10.760"/>
-</kw>
-<kw name="Page Should Not Contain" library="SeleniumLibrary">
-<arg>xpath=//span[@class='wpcf7-not-valid-tip'][normalize-space()='The e-mail address entered is invalid.']</arg>
-<doc>Verifies the current page does not contain ``text``.</doc>
-<msg timestamp="20250115 12:15:11.328" level="INFO">Current page does not contain text 'xpath=//span[@class='wpcf7-not-valid-tip'][normalize-space()='The e-mail address entered is invalid.']'.</msg>
-<status status="PASS" starttime="20250115 12:15:10.760" endtime="20250115 12:15:11.328"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:09.949" endtime="20250115 12:15:11.328"/>
-</kw>
-<kw name="Enter 'test message' into Message Field">
-<doc>This keyword enters the message 'test message' into the Message field.</doc>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>xpath=//textarea[@placeholder='Your Message']</arg>
-<arg>${MESSAGE}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:11.331" level="INFO">Typing text 'test message' into text field 'xpath=//textarea[@placeholder='Your Message']'.</msg>
-<status status="PASS" starttime="20250115 12:15:11.328" endtime="20250115 12:15:11.534"/>
-</kw>
-<kw name="Get Value" library="SeleniumLibrary">
-<var>${entered_message}</var>
-<arg>xpath=//textarea[@placeholder='Your Message']</arg>
-<doc>Returns the value attribute of the element identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:11.581" level="INFO">${entered_message} = test message</msg>
-<status status="PASS" starttime="20250115 12:15:11.534" endtime="20250115 12:15:11.581"/>
-</kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${entered_message}</arg>
-<arg>${MESSAGE}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20250115 12:15:11.582" endtime="20250115 12:15:11.582"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:11.328" endtime="20250115 12:15:11.582"/>
-</kw>
-<kw name="Look For Send Button">
-<doc>This keyword verifies that the Send button exists but is not clickable.</doc>
-<kw name="Element Should Be Disabled" library="SeleniumLibrary">
-<arg>xpath=//input[@class='wpcf7-form-control wpcf7-submit has-spinner' and @type='submit' and @value='Send']</arg>
-<doc>Verifies that element identified by ``locator`` is disabled.</doc>
-<status status="PASS" starttime="20250115 12:15:11.585" endtime="20250115 12:15:11.627"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:11.584" endtime="20250115 12:15:11.628"/>
-</kw>
-<kw name="Select Privacy Policy Checkbox">
-<doc>This keyword selects the Privacy Policy checkbox.</doc>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>xpath=//input[@type='checkbox' and @name='acceptance-376']</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:11.630" endtime="20250115 12:15:11.676"/>
-</kw>
-<kw name="Select Checkbox" library="SeleniumLibrary">
-<arg>xpath=//input[@type='checkbox' and @name='acceptance-376']</arg>
-<doc>Selects the checkbox identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:11.676" level="INFO">Selecting checkbox 'xpath=//input[@type='checkbox' and @name='acceptance-376']'.</msg>
-<status status="PASS" starttime="20250115 12:15:11.676" endtime="20250115 12:15:11.933"/>
-</kw>
-<kw name="Checkbox Should Be Selected" library="SeleniumLibrary">
-<arg>xpath=//input[@type='checkbox' and @name='acceptance-376']</arg>
-<doc>Verifies checkbox ``locator`` is selected/checked.</doc>
-<msg timestamp="20250115 12:15:11.938" level="INFO">Verifying checkbox 'xpath=//input[@type='checkbox' and @name='acceptance-376']' is selected.</msg>
-<status status="PASS" starttime="20250115 12:15:11.933" endtime="20250115 12:15:12.079"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:11.628" endtime="20250115 12:15:12.079"/>
-</kw>
-<kw name="Click Send Button">
-<doc>This keyword clicks the Send button and verifies that the error message is shown if the form is incomplete.</doc>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>xpath=//input[@class='wpcf7-form-control wpcf7-submit has-spinner' and @type='submit' and @value='Send']</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:12.080" level="INFO">Clicking button 'xpath=//input[@class='wpcf7-form-control wpcf7-submit has-spinner' and @type='submit' and @value='Send']'.</msg>
-<status status="PASS" starttime="20250115 12:15:12.079" endtime="20250115 12:15:12.385"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>xpath=(//div[@class='wpcf7-response-output'])[1]</arg>
-<arg>3s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:12.385" endtime="20250115 12:15:14.013"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:12.079" endtime="20250115 12:15:14.013"/>
-</kw>
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<arg>xpath=(//div[@class='wpcf7-response-output'])[1]</arg>
-<arg>THANK YOU FOR YOUR MESSAGE. IT HAS BEEN SENT.</arg>
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<msg timestamp="20250115 12:15:14.053" level="INFO">Element 'xpath=(//div[@class='wpcf7-response-output'])[1]' contains text 'THANK YOU FOR YOUR MESSAGE. IT HAS BEEN SENT.'.</msg>
-<status status="PASS" starttime="20250115 12:15:14.014" endtime="20250115 12:15:14.053"/>
-</kw>
-<kw name="Check Error Properties">
-<doc>This keyword checks the error properties to ensure the error message is not visible.</doc>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<var>${bg_color}</var>
-<arg>return window.getComputedStyle(document.querySelector('.wpcf7-response-output')).backgroundColor</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20250115 12:15:14.057" level="INFO">Executing JavaScript:
-return window.getComputedStyle(document.querySelector('.wpcf7-response-output')).backgroundColor
-Without any arguments.</msg>
-<msg timestamp="20250115 12:15:14.069" level="INFO">${bg_color} = rgba(0, 0, 0, 0)</msg>
-<status status="PASS" starttime="20250115 12:15:14.055" endtime="20250115 12:15:14.069"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Background Color: ${bg_color}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.069" level="INFO">Background Color: rgba(0, 0, 0, 0)</msg>
-<status status="PASS" starttime="20250115 12:15:14.069" endtime="20250115 12:15:14.069"/>
-</kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${alpha_value}</var>
-<arg>float('${bg_color.split(",")[-1].strip()[:-1]}')</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250115 12:15:14.072" level="INFO">${alpha_value} = 0.0</msg>
-<status status="PASS" starttime="20250115 12:15:14.071" endtime="20250115 12:15:14.072"/>
-</kw>
-<kw name="Run Keyword And Ignore Error" library="BuiltIn">
-<arg>Should Be True</arg>
-<arg>${alpha_value} &gt; 0</arg>
-<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
-<kw name="Should Be True" library="BuiltIn">
-<arg>${alpha_value} &gt; 0</arg>
-<doc>Fails if the given condition is not true.</doc>
-<msg timestamp="20250115 12:15:14.073" level="FAIL">'0.0 &gt; 0' should be true.</msg>
-<status status="FAIL" starttime="20250115 12:15:14.073" endtime="20250115 12:15:14.073"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.072" endtime="20250115 12:15:14.073"/>
-</kw>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<var>${fg_color}</var>
-<arg>return window.getComputedStyle(document.querySelector('.wpcf7-response-output')).color</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20250115 12:15:14.075" level="INFO">Executing JavaScript:
-return window.getComputedStyle(document.querySelector('.wpcf7-response-output')).color
-Without any arguments.</msg>
-<msg timestamp="20250115 12:15:14.090" level="INFO">${fg_color} = rgb(255, 255, 255)</msg>
-<status status="PASS" starttime="20250115 12:15:14.074" endtime="20250115 12:15:14.090"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Foreground Color: ${fg_color}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.091" level="INFO">Foreground Color: rgb(255, 255, 255)</msg>
-<status status="PASS" starttime="20250115 12:15:14.090" endtime="20250115 12:15:14.091"/>
-</kw>
-<kw name="Run Keyword And Ignore Error" library="BuiltIn">
-<arg>Should Contain</arg>
-<arg>${bg_color}</arg>
-<arg>rgb(255, 255, 255)</arg>
-<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${bg_color}</arg>
-<arg>rgb(255, 255, 255)</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<msg timestamp="20250115 12:15:14.092" level="FAIL">'rgba(0, 0, 0, 0)' does not contain 'rgb(255, 255, 255)'</msg>
-<status status="FAIL" starttime="20250115 12:15:14.091" endtime="20250115 12:15:14.092"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.091" endtime="20250115 12:15:14.092"/>
-</kw>
-<kw name="Run Keyword And Ignore Error" library="BuiltIn">
-<arg>Should Be Equal As Strings</arg>
-<arg>${fg_color}</arg>
-<arg>rgb(255, 255, 255)</arg>
-<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${fg_color}</arg>
-<arg>rgb(255, 255, 255)</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20250115 12:15:14.092" endtime="20250115 12:15:14.093"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.092" endtime="20250115 12:15:14.093"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.055" endtime="20250115 12:15:14.093"/>
-</kw>
-<kw name="Look For Existing Fields">
-<doc>This keyword verifies that the following fields exist on the Contact Us page: First Name, Last Name, Email, Website, and Message.</doc>
-<kw name="Create List" library="BuiltIn">
-<var>${fields}</var>
-<arg>first-name</arg>
-<arg>last-name</arg>
-<arg>your-email</arg>
-<arg>web-site</arg>
-<arg>your-message</arg>
-<doc>Returns a list containing given items.</doc>
-<msg timestamp="20250115 12:15:14.095" level="INFO">${fields} = ['first-name', 'last-name', 'your-email', 'web-site', 'your-message']</msg>
-<status status="PASS" starttime="20250115 12:15:14.094" endtime="20250115 12:15:14.095"/>
-</kw>
-<for flavor="IN">
-<var>${field}</var>
-<value>@{fields}</value>
-<iter>
-<var name="${field}">first-name</var>
-<kw name="Set Variable" library="BuiltIn">
-<var>${xpath}</var>
-<arg>xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//textarea</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250115 12:15:14.096" level="INFO">${xpath} = xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='first-name']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='first-name']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:14.095" endtime="20250115 12:15:14.096"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>XPath for field ${field}: ${xpath}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.096" level="INFO">XPath for field first-name: xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='first-name']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='first-name']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:14.096" endtime="20250115 12:15:14.096"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${xpath}</arg>
-<arg>timeout=5</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:14.096" endtime="20250115 12:15:14.139"/>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${empty_field}</var>
-<arg>${xpath}</arg>
-<arg>value</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20250115 12:15:14.178" level="INFO">${empty_field} = </msg>
-<status status="PASS" starttime="20250115 12:15:14.139" endtime="20250115 12:15:14.178"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Retrieved value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.178" level="INFO">Retrieved value for field first-name: ''</msg>
-<status status="PASS" starttime="20250115 12:15:14.178" endtime="20250115 12:15:14.178"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == 'None'</arg>
-<arg>Set Variable</arg>
-<arg>${empty_field}</arg>
-<arg>''</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:14.178" endtime="20250115 12:15:14.178"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Final value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.178" level="INFO">Final value for field first-name: ''</msg>
-<status status="PASS" starttime="20250115 12:15:14.178" endtime="20250115 12:15:14.178"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == ''</arg>
-<arg>Log</arg>
-<arg>Field is empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="Log" library="BuiltIn">
-<arg>Field is empty</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.180" level="INFO">Field is empty</msg>
-<status status="PASS" starttime="20250115 12:15:14.180" endtime="20250115 12:15:14.180"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.178" endtime="20250115 12:15:14.180"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' != ''</arg>
-<arg>fail</arg>
-<arg>Field is NOT empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:14.181" endtime="20250115 12:15:14.181"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.095" endtime="20250115 12:15:14.181"/>
-</iter>
-<iter>
-<var name="${field}">last-name</var>
-<kw name="Set Variable" library="BuiltIn">
-<var>${xpath}</var>
-<arg>xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//textarea</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250115 12:15:14.181" level="INFO">${xpath} = xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='last-name']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='last-name']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:14.181" endtime="20250115 12:15:14.181"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>XPath for field ${field}: ${xpath}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.182" level="INFO">XPath for field last-name: xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='last-name']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='last-name']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:14.181" endtime="20250115 12:15:14.182"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${xpath}</arg>
-<arg>timeout=5</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:14.182" endtime="20250115 12:15:14.222"/>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${empty_field}</var>
-<arg>${xpath}</arg>
-<arg>value</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20250115 12:15:14.259" level="INFO">${empty_field} = </msg>
-<status status="PASS" starttime="20250115 12:15:14.222" endtime="20250115 12:15:14.259"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Retrieved value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.261" level="INFO">Retrieved value for field last-name: ''</msg>
-<status status="PASS" starttime="20250115 12:15:14.261" endtime="20250115 12:15:14.261"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == 'None'</arg>
-<arg>Set Variable</arg>
-<arg>${empty_field}</arg>
-<arg>''</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:14.261" endtime="20250115 12:15:14.261"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Final value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.261" level="INFO">Final value for field last-name: ''</msg>
-<status status="PASS" starttime="20250115 12:15:14.261" endtime="20250115 12:15:14.261"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == ''</arg>
-<arg>Log</arg>
-<arg>Field is empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="Log" library="BuiltIn">
-<arg>Field is empty</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.262" level="INFO">Field is empty</msg>
-<status status="PASS" starttime="20250115 12:15:14.262" endtime="20250115 12:15:14.262"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.262" endtime="20250115 12:15:14.262"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' != ''</arg>
-<arg>fail</arg>
-<arg>Field is NOT empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:14.262" endtime="20250115 12:15:14.263"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.181" endtime="20250115 12:15:14.263"/>
-</iter>
-<iter>
-<var name="${field}">your-email</var>
-<kw name="Set Variable" library="BuiltIn">
-<var>${xpath}</var>
-<arg>xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//textarea</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250115 12:15:14.263" level="INFO">${xpath} = xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='your-email']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='your-email']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:14.263" endtime="20250115 12:15:14.263"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>XPath for field ${field}: ${xpath}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.264" level="INFO">XPath for field your-email: xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='your-email']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='your-email']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:14.263" endtime="20250115 12:15:14.264"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${xpath}</arg>
-<arg>timeout=5</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:14.264" endtime="20250115 12:15:14.303"/>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${empty_field}</var>
-<arg>${xpath}</arg>
-<arg>value</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20250115 12:15:14.341" level="INFO">${empty_field} = </msg>
-<status status="PASS" starttime="20250115 12:15:14.305" endtime="20250115 12:15:14.341"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Retrieved value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.341" level="INFO">Retrieved value for field your-email: ''</msg>
-<status status="PASS" starttime="20250115 12:15:14.341" endtime="20250115 12:15:14.342"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == 'None'</arg>
-<arg>Set Variable</arg>
-<arg>${empty_field}</arg>
-<arg>''</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:14.342" endtime="20250115 12:15:14.342"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Final value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.342" level="INFO">Final value for field your-email: ''</msg>
-<status status="PASS" starttime="20250115 12:15:14.342" endtime="20250115 12:15:14.342"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == ''</arg>
-<arg>Log</arg>
-<arg>Field is empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="Log" library="BuiltIn">
-<arg>Field is empty</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.343" level="INFO">Field is empty</msg>
-<status status="PASS" starttime="20250115 12:15:14.343" endtime="20250115 12:15:14.343"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.342" endtime="20250115 12:15:14.343"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' != ''</arg>
-<arg>fail</arg>
-<arg>Field is NOT empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:14.344" endtime="20250115 12:15:14.344"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.263" endtime="20250115 12:15:14.344"/>
-</iter>
-<iter>
-<var name="${field}">web-site</var>
-<kw name="Set Variable" library="BuiltIn">
-<var>${xpath}</var>
-<arg>xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//textarea</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250115 12:15:14.345" level="INFO">${xpath} = xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='web-site']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='web-site']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:14.344" endtime="20250115 12:15:14.345"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>XPath for field ${field}: ${xpath}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.345" level="INFO">XPath for field web-site: xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='web-site']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='web-site']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:14.345" endtime="20250115 12:15:14.345"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${xpath}</arg>
-<arg>timeout=5</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:14.345" endtime="20250115 12:15:14.383"/>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${empty_field}</var>
-<arg>${xpath}</arg>
-<arg>value</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20250115 12:15:14.421" level="INFO">${empty_field} = </msg>
-<status status="PASS" starttime="20250115 12:15:14.383" endtime="20250115 12:15:14.421"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Retrieved value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.422" level="INFO">Retrieved value for field web-site: ''</msg>
-<status status="PASS" starttime="20250115 12:15:14.422" endtime="20250115 12:15:14.422"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == 'None'</arg>
-<arg>Set Variable</arg>
-<arg>${empty_field}</arg>
-<arg>''</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:14.422" endtime="20250115 12:15:14.423"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Final value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.423" level="INFO">Final value for field web-site: ''</msg>
-<status status="PASS" starttime="20250115 12:15:14.423" endtime="20250115 12:15:14.423"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == ''</arg>
-<arg>Log</arg>
-<arg>Field is empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="Log" library="BuiltIn">
-<arg>Field is empty</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.423" level="INFO">Field is empty</msg>
-<status status="PASS" starttime="20250115 12:15:14.423" endtime="20250115 12:15:14.424"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.423" endtime="20250115 12:15:14.424"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' != ''</arg>
-<arg>fail</arg>
-<arg>Field is NOT empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:14.424" endtime="20250115 12:15:14.424"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.344" endtime="20250115 12:15:14.424"/>
-</iter>
-<iter>
-<var name="${field}">your-message</var>
-<kw name="Set Variable" library="BuiltIn">
-<var>${xpath}</var>
-<arg>xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='${field}']//textarea</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250115 12:15:14.425" level="INFO">${xpath} = xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='your-message']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='your-message']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:14.425" endtime="20250115 12:15:14.425"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>XPath for field ${field}: ${xpath}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.426" level="INFO">XPath for field your-message: xpath=//span[@class='wpcf7-form-control-wrap' and @data-name='your-message']//input | //span[@class='wpcf7-form-control-wrap' and @data-name='your-message']//textarea</msg>
-<status status="PASS" starttime="20250115 12:15:14.425" endtime="20250115 12:15:14.426"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${xpath}</arg>
-<arg>timeout=5</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20250115 12:15:14.426" endtime="20250115 12:15:14.468"/>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${empty_field}</var>
-<arg>${xpath}</arg>
-<arg>value</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20250115 12:15:14.508" level="INFO">${empty_field} = </msg>
-<status status="PASS" starttime="20250115 12:15:14.468" endtime="20250115 12:15:14.508"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Retrieved value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.508" level="INFO">Retrieved value for field your-message: ''</msg>
-<status status="PASS" starttime="20250115 12:15:14.508" endtime="20250115 12:15:14.508"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == 'None'</arg>
-<arg>Set Variable</arg>
-<arg>${empty_field}</arg>
-<arg>''</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:14.508" endtime="20250115 12:15:14.510"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>Final value for field ${field}: '${empty_field}'</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.510" level="INFO">Final value for field your-message: ''</msg>
-<status status="PASS" starttime="20250115 12:15:14.510" endtime="20250115 12:15:14.510"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' == ''</arg>
-<arg>Log</arg>
-<arg>Field is empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="Log" library="BuiltIn">
-<arg>Field is empty</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250115 12:15:14.510" level="INFO">Field is empty</msg>
-<status status="PASS" starttime="20250115 12:15:14.510" endtime="20250115 12:15:14.510"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.510" endtime="20250115 12:15:14.510"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${empty_field}' != ''</arg>
-<arg>fail</arg>
-<arg>Field is NOT empty</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20250115 12:15:14.510" endtime="20250115 12:15:14.510"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.424" endtime="20250115 12:15:14.510"/>
-</iter>
-<status status="PASS" starttime="20250115 12:15:14.095" endtime="20250115 12:15:14.510"/>
-</for>
-<status status="PASS" starttime="20250115 12:15:14.094" endtime="20250115 12:15:14.512"/>
-</kw>
-<kw name="Look For Privacy Checkbox">
-<doc>This keyword verifies that the Privacy Policy checkbox exists and is not selected.</doc>
-<kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>xpath=//input[@type='checkbox' and @name='acceptance-376']</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20250115 12:15:14.554" level="INFO">Element 'xpath=//input[@type='checkbox' and @name='acceptance-376']' is displayed.</msg>
-<status status="PASS" starttime="20250115 12:15:14.512" endtime="20250115 12:15:14.555"/>
-</kw>
-<kw name="Checkbox Should Not Be Selected" library="SeleniumLibrary">
-<arg>xpath=//input[@type='checkbox' and @name='acceptance-376']</arg>
-<doc>Verifies checkbox ``locator`` is not selected/checked.</doc>
-<msg timestamp="20250115 12:15:14.557" level="INFO">Verifying checkbox 'xpath=//input[@type='checkbox' and @name='acceptance-376']' is not selected.</msg>
-<status status="PASS" starttime="20250115 12:15:14.555" endtime="20250115 12:15:14.623"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.512" endtime="20250115 12:15:14.623"/>
-</kw>
-<kw name="Look For Send Button">
-<doc>This keyword verifies that the Send button exists but is not clickable.</doc>
-<kw name="Element Should Be Disabled" library="SeleniumLibrary">
-<arg>xpath=//input[@class='wpcf7-form-control wpcf7-submit has-spinner' and @type='submit' and @value='Send']</arg>
-<doc>Verifies that element identified by ``locator`` is disabled.</doc>
-<status status="PASS" starttime="20250115 12:15:14.624" endtime="20250115 12:15:14.662"/>
-</kw>
-<status status="PASS" starttime="20250115 12:15:14.623" endtime="20250115 12:15:14.662"/>
+<msg timestamp="20250116 10:03:18.756" level="INFO">Clicking element 'xpath=//a[@href='https://www.avisto-eastern.com/expertise/application-software/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']'.</msg>
+<status status="PASS" starttime="20250116 10:03:18.755" endtime="20250116 10:03:21.189"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${APPLICATION_SOFTWARE_URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20250116 10:03:21.221" level="INFO">Current location is 'https://www.avisto-eastern.com/expertise/application-software/'.</msg>
+<status status="PASS" starttime="20250116 10:03:21.189" endtime="20250116 10:03:21.221"/>
 </kw>
 <kw name="Click Avisto Logo">
 <doc>This keyword clicks on the Avisto logo and verifies that the homepage is opened.
@@ -1295,40 +55,268 @@ It checks that after clicking the logo, the browser navigates back to the homepa
 <kw name="Click Image" library="SeleniumLibrary">
 <arg>xpath=//img[@class='mobile']</arg>
 <doc>Clicks an image identified by ``locator``.</doc>
-<msg timestamp="20250115 12:15:14.664" level="INFO">Clicking image 'xpath=//img[@class='mobile']'.</msg>
-<status status="PASS" starttime="20250115 12:15:14.664" endtime="20250115 12:15:16.796"/>
+<msg timestamp="20250116 10:03:21.222" level="INFO">Clicking image 'xpath=//img[@class='mobile']'.</msg>
+<status status="PASS" starttime="20250116 10:03:21.221" endtime="20250116 10:03:23.587"/>
 </kw>
 <kw name="Title Should Be" library="SeleniumLibrary">
 <arg>Home &lt; Avisto Eastern Europe</arg>
 <doc>Verifies that the current page title equals ``title``.</doc>
-<msg timestamp="20250115 12:15:16.875" level="INFO">Page title is 'Home &lt; Avisto Eastern Europe'.</msg>
-<status status="PASS" starttime="20250115 12:15:16.796" endtime="20250115 12:15:16.875"/>
+<msg timestamp="20250116 10:03:24.150" level="INFO">Page title is 'Home &lt; Avisto Eastern Europe'.</msg>
+<status status="PASS" starttime="20250116 10:03:23.587" endtime="20250116 10:03:24.150"/>
 </kw>
 <kw name="Location Should Be" library="SeleniumLibrary">
 <arg>https://www.avisto-eastern.com/</arg>
 <doc>Verifies that the current URL is exactly ``url``.</doc>
-<msg timestamp="20250115 12:15:17.179" level="INFO">Current location is 'https://www.avisto-eastern.com/'.</msg>
-<status status="PASS" starttime="20250115 12:15:16.875" endtime="20250115 12:15:17.179"/>
+<msg timestamp="20250116 10:03:24.221" level="INFO">Current location is 'https://www.avisto-eastern.com/'.</msg>
+<status status="PASS" starttime="20250116 10:03:24.151" endtime="20250116 10:03:24.221"/>
 </kw>
-<status status="PASS" starttime="20250115 12:15:14.663" endtime="20250115 12:15:17.179"/>
+<status status="PASS" starttime="20250116 10:03:21.221" endtime="20250116 10:03:24.221"/>
+</kw>
+<kw name="Scroll Down">
+<doc>This keyword scrolls down the page.</doc>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>window.scrollBy(0, 1000)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20250116 10:03:24.223" level="INFO">Executing JavaScript:
+window.scrollBy(0, 1000)
+Without any arguments.</msg>
+<status status="PASS" starttime="20250116 10:03:24.221" endtime="20250116 10:03:24.392"/>
+</kw>
+<status status="PASS" starttime="20250116 10:03:24.221" endtime="20250116 10:03:24.392"/>
+</kw>
+<status status="PASS" starttime="20250116 10:03:18.320" endtime="20250116 10:03:24.392"/>
+</kw>
+<kw name="Click Lean More Button For Embedded Software">
+<doc>Clicks the "Lean more" button for the Embedded Software domain.</doc>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath=//section[@class='elementor-section elementor-top-section elementor-element elementor-element-58cac98 elementor-section-boxed elementor-section-height-default elementor-section-height-default parallax_section_no qode_elementor_container_no']//div[@class='elementor-container elementor-column-gap-default']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20250116 10:03:24.393" endtime="20250116 10:03:24.879"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath=//a[@href='https://www.avisto-eastern.com/expertise/embedded-software/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250116 10:03:24.879" endtime="20250116 10:03:25.158"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//a[@href='https://www.avisto-eastern.com/expertise/embedded-software/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20250116 10:03:25.158" level="INFO">Clicking element 'xpath=//a[@href='https://www.avisto-eastern.com/expertise/embedded-software/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']'.</msg>
+<status status="PASS" starttime="20250116 10:03:25.158" endtime="20250116 10:03:27.943"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${EMBEDDED_SOFTWARE_URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20250116 10:03:27.983" level="INFO">Current location is 'https://www.avisto-eastern.com/expertise/embedded-software/'.</msg>
+<status status="PASS" starttime="20250116 10:03:27.943" endtime="20250116 10:03:27.983"/>
+</kw>
+<kw name="Click Avisto Logo">
+<doc>This keyword clicks on the Avisto logo and verifies that the homepage is opened.
+It checks that after clicking the logo, the browser navigates back to the homepage URL https://www.avisto-eastern.com/.</doc>
+<kw name="Click Image" library="SeleniumLibrary">
+<arg>xpath=//img[@class='mobile']</arg>
+<doc>Clicks an image identified by ``locator``.</doc>
+<msg timestamp="20250116 10:03:27.983" level="INFO">Clicking image 'xpath=//img[@class='mobile']'.</msg>
+<status status="PASS" starttime="20250116 10:03:27.983" endtime="20250116 10:03:30.799"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Home &lt; Avisto Eastern Europe</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20250116 10:03:31.691" level="INFO">Page title is 'Home &lt; Avisto Eastern Europe'.</msg>
+<status status="PASS" starttime="20250116 10:03:30.799" endtime="20250116 10:03:31.691"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>https://www.avisto-eastern.com/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20250116 10:03:31.736" level="INFO">Current location is 'https://www.avisto-eastern.com/'.</msg>
+<status status="PASS" starttime="20250116 10:03:31.691" endtime="20250116 10:03:31.736"/>
+</kw>
+<status status="PASS" starttime="20250116 10:03:27.983" endtime="20250116 10:03:31.736"/>
+</kw>
+<kw name="Scroll Down">
+<doc>This keyword scrolls down the page.</doc>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>window.scrollBy(0, 1000)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20250116 10:03:31.741" level="INFO">Executing JavaScript:
+window.scrollBy(0, 1000)
+Without any arguments.</msg>
+<status status="PASS" starttime="20250116 10:03:31.738" endtime="20250116 10:03:31.791"/>
+</kw>
+<status status="PASS" starttime="20250116 10:03:31.736" endtime="20250116 10:03:31.791"/>
+</kw>
+<status status="PASS" starttime="20250116 10:03:24.392" endtime="20250116 10:03:31.792"/>
+</kw>
+<kw name="Click Lean More Button For DevOps">
+<doc>Clicks the "Lean more" button for the DevOps domain.</doc>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath=//section[@class='elementor-section elementor-top-section elementor-element elementor-element-58cac98 elementor-section-boxed elementor-section-height-default elementor-section-height-default parallax_section_no qode_elementor_container_no']//div[@class='elementor-container elementor-column-gap-default']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20250116 10:03:31.792" endtime="20250116 10:03:32.681"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath=//a[@href='https://www.avisto-eastern.com/expertise/devops/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250116 10:03:32.681" endtime="20250116 10:03:33.620"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//a[@href='https://www.avisto-eastern.com/expertise/devops/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20250116 10:03:33.622" level="INFO">Clicking element 'xpath=//a[@href='https://www.avisto-eastern.com/expertise/devops/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']'.</msg>
+<status status="PASS" starttime="20250116 10:03:33.621" endtime="20250116 10:03:37.231"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${DEVOPS_URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20250116 10:03:37.260" level="INFO">Current location is 'https://www.avisto-eastern.com/expertise/devops/'.</msg>
+<status status="PASS" starttime="20250116 10:03:37.231" endtime="20250116 10:03:37.260"/>
+</kw>
+<kw name="Click Avisto Logo">
+<doc>This keyword clicks on the Avisto logo and verifies that the homepage is opened.
+It checks that after clicking the logo, the browser navigates back to the homepage URL https://www.avisto-eastern.com/.</doc>
+<kw name="Click Image" library="SeleniumLibrary">
+<arg>xpath=//img[@class='mobile']</arg>
+<doc>Clicks an image identified by ``locator``.</doc>
+<msg timestamp="20250116 10:03:37.262" level="INFO">Clicking image 'xpath=//img[@class='mobile']'.</msg>
+<status status="PASS" starttime="20250116 10:03:37.261" endtime="20250116 10:03:44.277"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Home &lt; Avisto Eastern Europe</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20250116 10:03:44.352" level="INFO">Page title is 'Home &lt; Avisto Eastern Europe'.</msg>
+<status status="PASS" starttime="20250116 10:03:44.277" endtime="20250116 10:03:44.352"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>https://www.avisto-eastern.com/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20250116 10:03:44.357" level="INFO">Current location is 'https://www.avisto-eastern.com/'.</msg>
+<status status="PASS" starttime="20250116 10:03:44.352" endtime="20250116 10:03:44.357"/>
+</kw>
+<status status="PASS" starttime="20250116 10:03:37.260" endtime="20250116 10:03:44.357"/>
+</kw>
+<kw name="Scroll Down">
+<doc>This keyword scrolls down the page.</doc>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>window.scrollBy(0, 1000)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20250116 10:03:44.372" level="INFO">Executing JavaScript:
+window.scrollBy(0, 1000)
+Without any arguments.</msg>
+<status status="PASS" starttime="20250116 10:03:44.371" endtime="20250116 10:03:44.388"/>
+</kw>
+<status status="PASS" starttime="20250116 10:03:44.370" endtime="20250116 10:03:44.388"/>
+</kw>
+<status status="PASS" starttime="20250116 10:03:31.792" endtime="20250116 10:03:44.388"/>
+</kw>
+<kw name="Click Lean More Button For Quality Assurance">
+<doc>Clicks the "Lean more" button for the Quality Assurance domain.</doc>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath=//section[@class='elementor-section elementor-top-section elementor-element elementor-element-58cac98 elementor-section-boxed elementor-section-height-default elementor-section-height-default parallax_section_no qode_elementor_container_no']//div[@class='elementor-container elementor-column-gap-default']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20250116 10:03:44.388" endtime="20250116 10:03:44.880"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath=//a[@href='https://www.avisto-eastern.com/expertise/quality-assurance/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250116 10:03:44.880" endtime="20250116 10:03:45.423"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//a[@href='https://www.avisto-eastern.com/expertise/quality-assurance/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20250116 10:03:45.439" level="INFO">Clicking element 'xpath=//a[@href='https://www.avisto-eastern.com/expertise/quality-assurance/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']'.</msg>
+<status status="PASS" starttime="20250116 10:03:45.423" endtime="20250116 10:03:47.405"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${QUALITY_ASSURANCE_URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20250116 10:03:47.445" level="INFO">Current location is 'https://www.avisto-eastern.com/expertise/quality-assurance/'.</msg>
+<status status="PASS" starttime="20250116 10:03:47.406" endtime="20250116 10:03:47.445"/>
+</kw>
+<kw name="Click Avisto Logo">
+<doc>This keyword clicks on the Avisto logo and verifies that the homepage is opened.
+It checks that after clicking the logo, the browser navigates back to the homepage URL https://www.avisto-eastern.com/.</doc>
+<kw name="Click Image" library="SeleniumLibrary">
+<arg>xpath=//img[@class='mobile']</arg>
+<doc>Clicks an image identified by ``locator``.</doc>
+<msg timestamp="20250116 10:03:47.447" level="INFO">Clicking image 'xpath=//img[@class='mobile']'.</msg>
+<status status="PASS" starttime="20250116 10:03:47.446" endtime="20250116 10:03:49.365"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Home &lt; Avisto Eastern Europe</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20250116 10:03:49.391" level="INFO">Page title is 'Home &lt; Avisto Eastern Europe'.</msg>
+<status status="PASS" starttime="20250116 10:03:49.366" endtime="20250116 10:03:49.392"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>https://www.avisto-eastern.com/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20250116 10:03:49.403" level="INFO">Current location is 'https://www.avisto-eastern.com/'.</msg>
+<status status="PASS" starttime="20250116 10:03:49.392" endtime="20250116 10:03:49.403"/>
+</kw>
+<status status="PASS" starttime="20250116 10:03:47.445" endtime="20250116 10:03:49.403"/>
+</kw>
+<kw name="Scroll Down">
+<doc>This keyword scrolls down the page.</doc>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>window.scrollBy(0, 1000)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20250116 10:03:49.403" level="INFO">Executing JavaScript:
+window.scrollBy(0, 1000)
+Without any arguments.</msg>
+<status status="PASS" starttime="20250116 10:03:49.403" endtime="20250116 10:03:49.428"/>
+</kw>
+<status status="PASS" starttime="20250116 10:03:49.403" endtime="20250116 10:03:49.428"/>
+</kw>
+<status status="PASS" starttime="20250116 10:03:44.388" endtime="20250116 10:03:49.428"/>
+</kw>
+<kw name="Click Lean More Button For Industrial Automation">
+<doc>Clicks the "Lean more" button for the Industrial Automation domain.</doc>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath=//section[@class='elementor-section elementor-top-section elementor-element elementor-element-58cac98 elementor-section-boxed elementor-section-height-default elementor-section-height-default parallax_section_no qode_elementor_container_no']//div[@class='elementor-container elementor-column-gap-default']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20250116 10:03:49.430" endtime="20250116 10:03:50.360"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath=//a[@href='https://www.avisto-eastern.com/expertise/industrial-automation/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<msg timestamp="20250116 10:03:55.649" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20250116 10:03:55.649" level="FAIL">Element 'xpath=//a[@href='https://www.avisto-eastern.com/expertise/industrial-automation/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']' not visible after 5 seconds.</msg>
+<status status="FAIL" starttime="20250116 10:03:50.360" endtime="20250116 10:03:55.685"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath=//a[@href='https://www.avisto-eastern.com/expertise/industrial-automation/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20250116 10:03:55.685" endtime="20250116 10:03:55.685"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${INDUSTRIAL_AUTOMATION_URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="NOT RUN" starttime="20250116 10:03:55.686" endtime="20250116 10:03:55.686"/>
+</kw>
+<kw name="Click Avisto Logo">
+<doc>This keyword clicks on the Avisto logo and verifies that the homepage is opened.
+It checks that after clicking the logo, the browser navigates back to the homepage URL https://www.avisto-eastern.com/.</doc>
+<status status="NOT RUN" starttime="20250116 10:03:55.686" endtime="20250116 10:03:55.686"/>
+</kw>
+<status status="FAIL" starttime="20250116 10:03:49.430" endtime="20250116 10:03:55.686"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20250115 12:15:17.179" endtime="20250115 12:15:20.021"/>
+<status status="NOT RUN" starttime="20250116 10:03:55.692" endtime="20250116 10:03:55.692"/>
 </kw>
-<doc>This test case verifies the behavior of the Contact Us form, including validation errors and successful form submission.</doc>
-<status status="PASS" starttime="20250115 12:14:50.963" endtime="20250115 12:15:20.021"/>
+<doc>This test case verifies that clicking on the "Lean more" buttons for different expertise domains navigates to the correct pages and clicking the Avisto logo returns to the main homepage.</doc>
+<status status="FAIL" starttime="20250116 10:03:10.796" endtime="20250116 10:03:55.693">Element 'xpath=//a[@href='https://www.avisto-eastern.com/expertise/industrial-automation/']//span[@class='elementor-button-content-wrapper']//span[@class='elementor-button-text'][normalize-space()='Learn More']' not visible after 5 seconds.</status>
 </test>
-<status status="PASS" starttime="20250115 12:14:50.478" endtime="20250115 12:15:20.021"/>
+<status status="FAIL" starttime="20250116 10:03:10.452" endtime="20250116 10:03:55.694"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="TC9">TC9</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="TC10">TC10</stat>
 </suite>
 </statistics>
 <errors>

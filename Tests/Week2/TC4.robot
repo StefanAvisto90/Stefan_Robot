@@ -24,7 +24,7 @@ Mouse Over Case Studies Menu
     [Documentation]    This keyword hovers the mouse over the "Case Studies" menu and ensures no sub-menu items are displayed.
     ...                 Not sure how to test that
     mouse over    xpath=//span[normalize-space(text())='Case Studies']
-    Element Should Not Be Visible    xpath=//li[@id='nav-menu-item-18457']/div
+    Element Should Not Be Visible    xpath=//li[@id='nav-menu-item-18457']//div[@class='inner']
 
 Click Case Studies Menu Item
     [Documentation]    This keyword clicks the "Case Studies" menu item and verifies that the URL is correct (https://www.avisto-eastern.com/case-studies/).

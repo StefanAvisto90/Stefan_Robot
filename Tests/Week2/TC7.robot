@@ -25,7 +25,7 @@ Hover Over Blog Menu
     [Documentation]    This keyword simulates hovering the mouse over the "Blog" menu.
     ...                It ensures no sub-menu items are displayed.
     Mouse Over    xpath=//span[normalize-space(text())='Blog']
-    Element Should Not Be Visible    xpath=//li[@id='nav-menu-item-20109']/div
+    Element Should Not Be Visible    xpath=//li[@id='nav-menu-item-20109']//div[@class='inner']
 
 
 Click Blog Menu Item
